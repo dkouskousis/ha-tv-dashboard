@@ -1,0 +1,13 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "TV Dashboard",
+        "description": "Δημιουργία του full-screen dashboard για τηλεόραση."
+      }
+    },
+    "abort": {
+      "already_configured": "Το TV Dashboard έχει ήδη ρυθμιστεί."
+    }
+  }
+}
