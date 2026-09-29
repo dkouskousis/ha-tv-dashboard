@@ -1,7 +1,7 @@
 {
   "domain": "tv_dashboard",
   "name": "TV Dashboard",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "documentation": "https://github.com/dkouskousis/ha-tv-dashboard",
   "issue_tracker": "https://github.com/dkouskousis/ha-tv-dashboard/issues",
   "dependencies": ["frontend", "http", "panel_custom"],
