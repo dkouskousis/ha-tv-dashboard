@@ -1,80 +1,123 @@
 # TV Dashboard for Home Assistant
 
-A full-screen Home Assistant custom panel designed for Smart TVs and D-pad remotes.
+A standalone full-screen Home Assistant dashboard designed specifically for Smart TVs and D-pad remotes.
 
 ## Version
-0.1.0
 
-## Features
-- Native Home Assistant custom panel
-- URL: `/tv-dashboard`
-- Full-screen 16:9 layout
-- Live Home Assistant entity states
-- D-pad navigation: Up / Down / Left / Right
-- OK / Enter activation
-- Samsung Tizen Back key support
-- Conditional alert cards
-- Main navigation tiles
-- Presence cards
-- HACS-compatible repository structure
+**0.2.0**
+
+## TV-first design
+
+The TV interface is now completely independent from the normal Lovelace dashboard.
+
+It does **not** navigate to `/new-minimalist` or any other existing dashboard view.
+
+Everything stays under:
+
+```
+/tv-dashboard
+```
+
+Internal pages use hash navigation, for example:
+
+```
+/tv-dashboard#/lights
+/tv-dashboard#/climate
+/tv-dashboard#/media
+/tv-dashboard#/vacuum
+```
+
+## Design
+
+- Pure black background
+- Minimal dark cards
+- Large typography for viewing from a distance
+- 4-column 16:9 layout
+- White high-contrast focus state
+- Built specifically for remote-control navigation
+
+## Included pages
+
+- Home
+- House
+- Lights
+- Security
+- Media
+- Climate
+- Vacuum
+- Plants
+- Weather
+- Network
+- Energy
+
+## Home screen
+
+The Home screen includes:
+
+- Conditional status/alert chips
+- Weather chip
+- Greeting and date
+- House
+- Lights
+- Security
+- Media
+- Climate
+- Vacuum
+- Plants
+- Network
+- Dimitris / Vassilis / Flery / Guest presence
+
+Weather and Energy are available through the top chips instead of duplicate large menu tiles.
+
+## Direct Home Assistant control
+
+The TV dashboard talks directly to Home Assistant through the frontend `hass` object.
+
+Examples:
+
+- Lights: lists and toggles `light.*`
+- Media: lists `media_player.*` with play/pause, next/previous and volume
+- Climate: lists `climate.*` with target temperature controls
+- Vacuum: controls Roborock start/pause/stop/dock
+- Security: displays `alarm_control_panel.home_alarm` and door/window/motion sensors
+- Energy: displays power/energy sensors
+- Plants: displays matching watering, irrigation, soil and moisture entities
+- Network: displays matching server/network/UniFi/CPU/memory/uptime entities
+
+## Remote navigation
+
+Supported:
+
+- Arrow Up
+- Arrow Down
+- Arrow Left
+- Arrow Right
+- Enter / OK
+- Samsung Tizen Back key (`10009`)
+- Escape / BrowserBack
+
+Back returns to the TV Dashboard Home page instead of opening the normal Home Assistant dashboard.
 
 ## Install with HACS
-Add this repository as a custom repository in HACS:
+
+Add this repository as a custom HACS repository:
 
 https://github.com/dkouskousis/ha-tv-dashboard
 
 Category: **Integration**
 
-Then install **TV Dashboard** and restart Home Assistant.
+Then:
 
-After restart:
+1. Install **TV Dashboard**
+2. Restart Home Assistant
+3. Open **Settings → Devices & services**
+4. Click **Add integration**
+5. Search for **TV Dashboard**
 
-1. Open **Settings → Devices & services**
-2. Click **Add integration**
-3. Search for **TV Dashboard**
-4. Add it
-
-## Panel URL
-```
-/tv-dashboard
-```
-
-For the current local Home Assistant instance:
+## TV URL
 
 ```
 http://192.168.3.2:8123/tv-dashboard
 ```
 
-## Current navigation targets
-The TV home screen is independent of Lovelace, but the current menu tiles still open the existing Lovelace views under:
-
-```
-/new-minimalist/
-```
-
-Examples:
-- Home → `/new-minimalist/house`
-- Lights → `/new-minimalist/lights`
-- Climate → `/new-minimalist/clima`
-- Security → `/new-minimalist/security`
-- Media → `/new-minimalist/media`
-- Vacuum → `/new-minimalist/vacuum`
-- Plants → `/new-minimalist/plants`
-- Weather → `/new-minimalist/weather`
-- Network → `/new-minimalist/network_lab`
-- Energy → `/new-minimalist/energy`
-
-## Remote keys
-The frontend listens for:
-
-- ArrowUp
-- ArrowDown
-- ArrowLeft
-- ArrowRight
-- Enter
-- Space
-- Escape
-- BrowserBack / GoBack
-- Samsung Tizen keyCode `10009`
-
-The focus engine uses the real on-screen position of visible controls, so conditional cards can appear or disappear without breaking navigation.
+This is the URL intended for the Samsung TV application.
