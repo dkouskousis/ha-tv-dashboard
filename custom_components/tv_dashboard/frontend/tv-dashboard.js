@@ -607,7 +607,7 @@ class TvDashboardPanel extends HTMLElement {
     html += '</section><section class="people-row">';
 
     for (var j = 0; j < people.length; j++) {
-      entity = this._state(people[j][1]);
+      var entity = this._state(people[j][1]);
       var state = entity ? entity.state : "unknown";
 
       html +=
